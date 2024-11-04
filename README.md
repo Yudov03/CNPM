@@ -7,6 +7,7 @@ Thành viên:
 
 Cách chạy:
     - Clone code về máy 
+    - .venv\Scripts\activate
     - cd SSPS 
     - npm install 
     - npm run dev 
