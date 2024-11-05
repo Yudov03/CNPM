@@ -43,7 +43,7 @@ const NotificationIcon = styled.img`
   width: 24px;
   height: 24px;
   object-fit: contain;
-  padding-right: 12px;
+  margin-right: 12px;
 `;
 
 const UserAvatar = styled.img`
