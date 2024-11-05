@@ -1,25 +1,28 @@
 import React from "react";
 import styled from "styled-components";
-import NavLogo from "./logo";
-import NavItem from "./navitem";
-import { navItems } from "./navdata";
+import { menuItems } from "./navdata";
+import MenuItem from "./navitem";
 
-const SideNavigation = () => {
+const NavigationMenu = () => {
   return (
     <Nav>
-      <NavContent>
-        <NavLogo />
-        <NavItem
-          icon="https://cdn.builder.io/api/v1/image/assets/39b01875d7164623805557885af3caf0/0507a930741523e90d396145561690f21fc3e000e02e5cfedda12bd3d9ec6640?apiKey=39b01875d7164623805557885af3caf0&"
-          text="Bảng điều khiển"
-          isActive={true}
+      <Header>
+        <Logo src="https://cdn.builder.io/api/v1/image/assets/39b01875d7164623805557885af3caf0/f6972f0b75853885fbb0cbf0bc9d69ff06b8d702eda0c0aa88648b183a111562?apiKey=39b01875d7164623805557885af3caf0&" alt="BK SSPS Logo" />
+        <Title>SSPS</Title>
+      </Header>
+      <MenuList>
+        {menuItems.map((item, index) => (
+          <MenuItem key={index} {...item} />
+        ))}
+      </MenuList>
+      <Logout>
+        <MenuItem
+          icon= "https://cdn.builder.io/api/v1/image/assets/39b01875d7164623805557885af3caf0/5a59f03d7e03ac2566b68edf99594bdec686e930bb556eb79eee39785c6c7a04?apiKey=39b01875d7164623805557885af3caf0&"
+          label= "Đăng xuất"
+          isActive= {false}
+          isLogout= {true}
         />
-        <NavList>
-          {navItems.map((item, index) => (
-            <NavItem key={index} icon={item.icon} text={item.text} />
-          ))}
-        </NavList>
-      </NavContent>
+      </Logout>
     </Nav>
   );
 };
@@ -30,25 +33,45 @@ const Nav = styled.nav`
   flex-direction: column;
   overflow: hidden;
   font: 600 16px Segoe UI, sans-serif;
-`;
-
-const NavContent = styled.div`
   background-color: #fff;
-  display: flex;
-  width: 100%;
-  flex-direction: column;
-  padding: 40px 0;
+  padding: 40px 0 0 0;
+  height: 100vh;
+  box-sizing: border-box
 `;
 
-const NavList = styled.ul`
+const Header = styled.header`
+  align-self: center;
   display: flex;
-  margin-top: 25px;
-  width: 100%;
-  flex-direction: column;
-  align-items: flex-start;
-  color: var(--Grey-500, #7f8f98);
-  padding: 0 25px;
+  gap: 11px;
+  color: #3497f9;
+  letter-spacing: 1.6px;
+  font: 700 20px Sarala, sans-serif;
+  margin-bottom: 40px;
+`;
+
+const Logo = styled.img`
+  aspect-ratio: 1;
+  object-fit: contain;
+  object-position: center;
+  width: 36px;
+`;
+
+const Title = styled.h1`
+  transform: rotate(-0.005163154802990027rad);
+  margin: auto;
+`;
+
+const MenuList = styled.ul`
   list-style-type: none;
+  padding: 0;
+  margin: 0;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+`;
+const Logout = styled.ol`
+  padding: 0;
+  margin: 0;
 `;
 
-export default SideNavigation;
+export default NavigationMenu;
