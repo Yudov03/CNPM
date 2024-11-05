@@ -14,6 +14,7 @@ export default function PrinterManagement() {
                     </AddPrinterButton>
                 </Actions>
             </StyledHeader>
+            <hr />
             <PrinterTable/>
         </StyledPrinterList>
     );
