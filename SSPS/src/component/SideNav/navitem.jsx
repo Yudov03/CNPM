@@ -1,9 +1,20 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import styled from "styled-components";
+import { useNavigate, useLocation } from 'react-router-dom';
 
-const MenuItem = ({ icon, label, isActive, isLogout }) => {
+const MenuItem = ({ icon, label, isLogout, link }) => {
+  const navigate = useNavigate()
+  const locate = useLocation().pathname;
+  // const [selectedItem, setSelectedItem] = useState(null);
+  // const handleClick = (itemName) => {
+  //   setSelectedItem(selectedItem === itemName ? null : itemName);
+  // };
+  // useEffect(() => {
+  //   setSelectedItem(null);
+  // }, [locate]);
+
   return (
-    <ListItem $isActive={isActive} $isLogout={isLogout}>
+    <ListItem $isActive={locate=== `/${link}` ? true : false} $isLogout={isLogout} onClick={() => { navigate(`/${link}`) }}>
       <Icon src={icon} alt={`${label} icon`} />
       <Label>{label}</Label>
     </ListItem>
@@ -14,7 +25,7 @@ const ListItem = styled.li`
   display: flex;
   align-items: ${props => props.$isLogout ? "end" : "center"};
   gap: 17px;
-  color: ${props => props.$isActive ? "#7f8f98" : "#7f8f98"};
+  color: ${props => props.$isActive ? "#3497F9" : "#7f8f98"};
   background-color: ${props => props.$isActive ? "rgba(52, 151, 249, 0.12)" : "transparent"};
   padding: ${props => props.$isActive ? "10px 20px" : "10px 25px"};
   margin-bottom: 20px;
@@ -33,6 +44,7 @@ const Icon = styled.img`
   object-fit: contain;
   object-position: center;
   width: 20px;
+  color: green;
 `;
 const Label = styled.span`
   flex-grow: 1;
