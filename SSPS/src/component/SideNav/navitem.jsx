@@ -14,7 +14,7 @@ const MenuItem = ({ icon, label, isLogout, link }) => {
   // }, [locate]);
 
   return (
-    <ListItem $isActive={locate=== `/${link}` ? true : false} $isLogout={isLogout} onClick={() => { navigate(`/${link}`) }}>
+    <ListItem $isActive={locate.startsWith(`/${link}`)} $isLogout={isLogout} onClick={() => { navigate(`/${link}`) }}>
       <Icon src={icon} alt={`${label} icon`} />
       <Label>{label}</Label>
     </ListItem>

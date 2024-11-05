@@ -6,7 +6,7 @@ export default function PageHeader() {
     const locate = useLocation().pathname;
   return (
     <StyledHeader>
-      <Title>{locate===`/printer`?"Quản lý máy in":locate===`/student`?"Quản lý sinh viên":locate===`/config`?"Quản lý cấu hình":locate===`/setting`?"Cài đặt":locate===`/help`?"Hướng dẫn sử dụng":"Bảng điều kiển"}</Title>
+      <Title>{locate.startsWith(`/printer`)?"Quản lý máy in":locate.startsWith(`/student`)?"Quản lý sinh viên":locate.startsWith(`/config`)?"Quản lý cấu hình":locate.startsWith(`/setting`)?"Cài đặt":locate.startsWith(`/help`)?"Hướng dẫn sử dụng":"Bảng điều kiển"}</Title>
       <UserInfo>
         <NotificationIcon src="https://cdn.builder.io/api/v1/image/assets/39b01875d7164623805557885af3caf0/1536e40067cc9c265ca9de5605af3aeda05bbc6389ff63cfa22ac6417e4e4a6c?apiKey=39b01875d7164623805557885af3caf0&" alt="Notifications" />
         <UserAvatar src="https://cdn.builder.io/api/v1/image/assets/39b01875d7164623805557885af3caf0/3e7ee5f7efa15ee1e32ed01722ce44a19533e6369533646fe057c47b06e76753?apiKey=39b01875d7164623805557885af3caf0&" alt="User Avatar" />
